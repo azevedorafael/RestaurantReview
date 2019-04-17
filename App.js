@@ -8,7 +8,8 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
-import HeaderStlye from './HeaderStyle'
+
+import Header from 'components/Header'
 
 const restaurants = [
   { name: 'React Cafe', address: '123 AN' },
@@ -25,7 +26,8 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={HeaderStlye.header}>Restaurant Review</Text>
+
+        <Header />
 
         <TextInput
           style={styles.input}
