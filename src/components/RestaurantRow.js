@@ -3,10 +3,20 @@ import React, { Component } from 'react'
 import {
     View,
     Text,
-    StyleSheet
+    StyleSheet,
+    Button
 } from 'react-native'
 
 export default class RestaurantRow extends Component {
+
+    state = {
+        showInfo: false
+    }
+
+    infoPressed = () => {
+        this.setState({ showInfo: !this.state.showInfo })
+    }
+
     render() {
 
         const {
@@ -29,8 +39,20 @@ export default class RestaurantRow extends Component {
                 </View>
 
                 <View style={styles.edges}>
-                    <Text>Info</Text>
+                    <Button
+                        title="Info"
+                        color="#C93F0B"
+                        accessibilityLabel="Info"
+                        onPress={this.infoPressed}
+                        />
                 </View>
+
+                {
+                    this.state.showInfo && 
+                    <View>
+                        <Text>Restaurant Info</Text>
+                    </View>
+                }
             </View>
         )
     }
@@ -41,7 +63,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     edges: {
-        flex: 1, alignItems: 'center', justifyContent: 'center', padding: 5
+        flex: 1, alignItems: 'center', justifyContent: 'center', padding: 5, minWidth: 50
     },
     nameAddress: {
         flexDirection: 'column', flex: 8
